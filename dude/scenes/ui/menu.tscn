@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://bq75x2ya4wf6a"]
+
+[ext_resource type="Theme" uid="uid://cn5l8m255wl15" path="res://heading.tres" id="1_7w7rl"]
+[ext_resource type="Script" uid="uid://cu3mqvuevhfsy" path="res://scenes/ui/menu.gd" id="1_wedc3"]
+
+[node name="Menu" type="Node2D" unique_id=1589439732]
+script = ExtResource("1_wedc3")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=890059263]
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=931617199]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=981457587]
+layout_mode = 2
+theme = ExtResource("1_7w7rl")
+text = "PAUSE"
+
+[node name="Resume" type="Button" parent="CenterContainer/VBoxContainer" unique_id=567169828]
+layout_mode = 2
+theme = ExtResource("1_7w7rl")
+text = "Resume"
+
+[node name="Exit" type="Button" parent="CenterContainer/VBoxContainer" unique_id=17261858]
+layout_mode = 2
+theme = ExtResource("1_7w7rl")
+text = "Exit"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=1279211167]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=169621807]
+layout_mode = 2
+theme = ExtResource("1_7w7rl")
+theme_override_font_sizes/font_size = 20
+text = "Volume"
+
+[node name="HSlider" type="HSlider" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=350948827]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.1
+page = 0.115
+
+[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer" unique_id=943349904]
+layout_mode = 2
+theme = ExtResource("1_7w7rl")
+text = "Levels"
+
+[node name="OptionButton" type="OptionButton" parent="CenterContainer/VBoxContainer" unique_id=1136990879]
+layout_mode = 2
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="value_changed" from="CenterContainer/VBoxContainer/HBoxContainer/HSlider" to="." method="_on_volume_changed"]
+[connection signal="item_selected" from="CenterContainer/VBoxContainer/OptionButton" to="." method="on_level_button"]
